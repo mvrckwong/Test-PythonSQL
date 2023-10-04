@@ -17,5 +17,5 @@ LIMIT 5
 -- Select track_name from "Spotify" table and sort.
 SELECT *
 FROM "Spotify"
-ORDER BY track_name DESC
+ORDER BY track_name ASC
 LIMIT 10

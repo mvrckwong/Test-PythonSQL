@@ -1,12 +1,17 @@
--- Query the sum of film durations
-SELECT SUM(duration) AS total_duration
-FROM films;
+-- General
+SELECT * 
+FROM "Spotify"
 
 
--- Calculate the sum of gross from the year 2000 or later
-SELECT SUM(gross) AS total_gross
-FROM films
-WHERE release_year >= 2000;
+-- Query the sum of the artists
+SELECT SUM(artist_count)
+FROM "Spotify"
+
+
+-- Calculate the total streams from the year 2010.
+SELECT SUM(streams) as total_streams
+FROM "Spotify"
+WHERE released_year = 2010;
 
 
 -- Round the average number of facebook_likes to one decimal place

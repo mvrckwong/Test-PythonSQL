@@ -1,57 +1,52 @@
--- Count the number of birthdates in the people table.
-SELECT COUNT(birthdate) AS count_birthdate
-FROM people;
+-- General
+SELECT * FROM "Spotify" LIMIT 10;
 
 
--- Return the unique countries from the films table.
-SELECT DISTINCT country
-FROM films;
+-- Count the number of artists_name in the Spotify table.
+SELECT COUNT(artists_name) AS count_artist
+FROM "Spotify";
 
 
--- Select film_ids and imdb_score with an imdb_score over 7.0
-SELECT film_id, imdb_score
-FROM reviews
-WHERE imdb_score > 7.0;
+-- Return unique columns by artists_name from the "Spotify" table.
+SELECT DISTINCT artists_name
+FROM "Spotify"
+ORDER BY artists_name ASC
+LIMIT 20;
 
 
--- Count the Spanish-language films
-SELECT COUNT(language) AS count_spanish
-FROM films
-WHERE language = 'Spanish';
+-- Select tracks and artists that has released_year after 2015.
+SELECT track_name, artists_name, released_year
+FROM "Spotify"
+WHERE released_year > 2015
 
 
--- Find the title and year of films from 1990 or 1999
-SELECT title, release_year
-FROM films
-WHERE release_year = 1990 OR release_year = 1999;
+-- Count the 2023 and 2022 tracks
+SELECT COUNT(relsed_year)
+FROM "Spotify"
+WHERE released_year = 2023 or released_year = 2022;
 
 
--- Select the title and release_year for films released between 1990 and 2000
-SELECT title, release_year
-FROM films
-WHERE release_year BETWEEN 1990 AND 2000;
+-- Select the title and release_year for tracks released between 1990 and 2000
+SELECT track_name, artists_name, released_year
+FROM "Spotify"
+WHERE released_year BETWEEN 1990 AND 2000;
 
 
--- Find the title and release_year for all films over two hours in length 
--- released in 1990 and 2000
-SELECT title, release_year
-FROM films
-WHERE release_year IN (1990, 2000)
-	AND duration > 120;
+-- Find the track and artists in the Spotify Table where
+-- release year is in between 2020 and 2023, and
+-- the artists count is greater than 2
+SELECT track_name, artists_name, released_year, artist_count
+FROM "Spotify"
+WHERE released_year BETWEEN 2020 AND 2023
+	AND artist_count > 2;
 
+SELECT track_name, artists_name, released_year, mode
+FROM "Spotify"
+WHERE released_year IN (2015, 2017)
+	AND mode = "Minor"
+	
 
--- Count the unique titles
-SELECT COUNT(DISTINCT title) AS nineties_english_films_for_teens
-FROM films
--- Filter to release_years to between 1990 and 1999
-WHERE release_year BETWEEN 1990 AND 1999
--- Filter to English-language films
-	AND language = 'English'
--- Narrow it down to G, PG, and PG-13 certifications
-	AND certification IN ('G', 'PG', 'PG-13');
-
-
--- List all film titles with missing budgets
-SELECT title AS no_budget_info
-FROM films
-WHERE budget IS NULL;
+-- Selecting Null values
+SELECT track_name, artists_name, released_year, key
+FROM "Spotify"
+WHERE "key" IS NULL
