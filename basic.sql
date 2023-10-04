@@ -11,15 +11,11 @@ PRAGMA table_info("Spotify")
 -- Limit Selection
 SELECT *
 FROM "Spotify"
+LIMIT 5
 
 
--- Limit Selection
-SELECT track_name, artists_name, artist_count
+-- Select track_name from "Spotify" table and sort.
+SELECT *
 FROM "Spotify"
-LIMIT 3;
-
-
--- Select name from people and sort alphabetically
-SELECT name
-FROM people
-ORDER BY name;
+ORDER BY track_name DESC
+LIMIT 10
